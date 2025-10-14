@@ -1,0 +1,131 @@
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 32px;
+  background-color: #2f2fdb;
+  color: #ffffff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+.nav-menu {
+  display: flex;
+  gap: 24px;
+}
+
+.nav-link {
+  color: #ffffff;
+  text-decoration: none;
+  font-size: 1rem;
+  transition: color 0.3s ease;
+}
+
+.nav-link:hover {
+  color: #00bfff;
+}
+
+.provider-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #f9f9f9;
+}
+   
+.section-title {
+  font-size: 24px;
+  margin-bottom: 30px;
+}
+
+.provider-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+}
+
+
+.provider-card {
+  width: 150px;
+  height: 150px;
+  border-radius: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15);
+  cursor: pointer;
+  transition: transform 0.2s ease;
+}
+
+.provider-card:hover {
+  transform: scale(1.05);
+}
+
+.mtn {
+  background-color: #FFCB05; /* MTN Yellow */
+  color: #000;
+}
+
+.glo {
+  background-color: #1B9323; /* GLO Green */
+}
+
+.airtel {
+  background-color: #EE1C25; /* Airtel Red */
+}
+
+/* Data Price Section */
+.data-price-section {
+  padding: 40px 20px;
+  text-align: center;
+  background-color: #ffffff;
+}
+
+.data-grid {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.data-card {
+  background-color: #f1f1f1;
+  border-radius: 10px;
+  width: 160px;
+  height: 120px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  font-weight: bold;
+  font-size: 18px;
+  transition: transform 0.2s ease;
+  cursor: pointer;
+}
+
+.data-card:hover {
+  transform: translateY(-5px);
+}
+
+.data-card h3 {
+  margin: 0;
+  font-size: 20px;
+  color: #333;
+}
+
+.data-card p {
+  margin: 5px 0 0;
+  font-size: 18px;
+  color: #444;
+}
+
+.data-card-link {
+  text-decoration: none;
+}
