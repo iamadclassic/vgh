@@ -1,7 +1,19 @@
-import React, { useState } from 'react';
+import React, { useState, useRef } from 'react';
 
 function Service() {
   const [activeSection, setActiveSection] = useState(null);
+
+  const dataRef = useRef(null);
+  const airtimeRef = useRef(null);
+  const utilityRef = useRef(null);
+  const supportRef = useRef(null);
+
+  const scrollToRef = (ref, section) => {
+    setActiveSection(section);
+    setTimeout(() => {
+      ref.current?.scrollIntoView({ behavior: 'smooth' });
+    }, 100); // Delay to allow section to be rendered
+  };
 
   // ===== DATA BUNDLES LOGIC =====
   const allBundles = [
@@ -89,17 +101,19 @@ function Service() {
         }
 
         .service-card {
-          background: #642929ff;
+          background: #5c0febff;
+          color: white;
           border-radius: 10px;
-          padding: 1.5rem;
+          padding: 1.5rem; 
           box-shadow: 0 4px 12px rgba(0,0,0,0.06);
           text-align: center;
           cursor: pointer;
-          transition: transform 0.2s ease;
+          transition: transform 0.2s ease, background-color 0.3s ease;
         }
 
         .service-card:hover {
           transform: translateY(-5px);
+          background: #590ee4ff;
         }
 
         .icon {
@@ -171,35 +185,36 @@ function Service() {
       <div className="page-container">
         <h1 className="page-title">Our Services</h1>
 
+        {/* Service Cards */}
         <div className="service-cards">
-          <div className="service-card" onClick={() => setActiveSection('data')}>
+          <div className="service-card" onClick={() => scrollToRef(dataRef, 'data')}>
             <div className="icon">📶</div>
             <h3>Data Bundles</h3>
             <p>Buy affordable data for MTN, GLO, Airtel & 9mobile instantly.</p>
           </div>
 
-          <div className="service-card" onClick={() => setActiveSection('airtime')}>
+          <div className="service-card" onClick={() => scrollToRef(airtimeRef, 'airtime')}>
             <div className="icon">💳</div>
             <h3>Airtime Top-Up</h3>
             <p>Recharge your line in seconds without extra charges.</p>
           </div>
 
-          <div className="service-card" onClick={() => setActiveSection('utility')}>
+          <div className="service-card" onClick={() => scrollToRef(utilityRef, 'utility')}>
             <div className="icon">💡</div>
             <h3>Utility Payment</h3>
             <p>Pay electricity and TV bills without queues or delays.</p>
           </div>
 
-          <div className="service-card" onClick={() => setActiveSection('support')}>
+          <div className="service-card" onClick={() => scrollToRef(supportRef, 'support')}>
             <div className="icon">🤝</div>
             <h3>Support</h3>
             <p>24/7 customer service to help you anytime, anywhere.</p>
           </div>
         </div>
 
-        {/* === Data Bundles Section === */}
+        {/* Data Section */}
         {activeSection === 'data' && (
-          <div className="section">
+          <div ref={dataRef} className="section">
             <h2>Data Bundles</h2>
             <div className="filters">
               {['All', 'MTN', 'GLO', 'Airtel'].map(provider => (
@@ -234,9 +249,9 @@ function Service() {
           </div>
         )}
 
-        {/* === Airtime Section === */}
+        {/* Airtime Section */}
         {activeSection === 'airtime' && (
-          <div className="section">
+          <div ref={airtimeRef} className="section">
             <h2>Airtime Top-Up</h2>
             <div className="filters">
               {['All', 'MTN', 'GLO', 'Airtel', '9mobile'].map(provider => (
@@ -271,9 +286,9 @@ function Service() {
           </div>
         )}
 
-        {/* === Utility Payment Section === */}
+        {/* Utility Section */}
         {activeSection === 'utility' && (
-          <div className="section">
+          <div ref={utilityRef} className="section">
             <h2>Utility Payments</h2>
             <div className="filters">
               {['All', 'Electricity', 'TV'].map(type => (
@@ -307,11 +322,11 @@ function Service() {
           </div>
         )}
 
-        {/* === Support Section === */}
+        {/* Support Section */}
         {activeSection === 'support' && (
-          <div className="section">
+          <div ref={supportRef} className="section">
             <h2>Customer Support</h2>
-            <p>Contact us at idowuadebayo226@gmail.com or call 08146166269.</p>
+            <p>Contact us at <a href="mailto:idowuadebayo226@gmail.com">idowuadebayo226@gmail.com</a> or call 08146166269.</p>
           </div>
         )}
       </div>
@@ -319,5 +334,4 @@ function Service() {
   );
 }
 
-export default Service;
-
+export default Service;  
